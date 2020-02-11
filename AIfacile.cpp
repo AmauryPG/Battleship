@@ -4,24 +4,29 @@
 AIfacile::AIfacile()
 {
 	//creation  de bateaux
-	bateau1.setTaille(4);
+	bateau1.setTaille(3);
 	bateau1.setDirection(0);
+	bateau1.InitialPointDeVie();
 	bateau1.setId(4);
 
 	bateau2.setTaille(3);
 	bateau2.setDirection(1);
+	bateau2.InitialPointDeVie();
 	bateau2.setId(5);
 
 	bateau3.setTaille(4);
 	bateau3.setDirection(2);
+	bateau3.InitialPointDeVie();
 	bateau3.setId(6);
 
 	bateau4.setTaille(5);
 	bateau4.setDirection(3);
+	bateau4.InitialPointDeVie();
 	bateau4.setId(7);
 
 	bateau5.setTaille(2);
 	bateau5.setDirection(3);
+	bateau5.InitialPointDeVie();
 	bateau5.setId(3);
 
 	// init du tableau
@@ -61,7 +66,7 @@ AIfacile::AIfacile()
 			int ctr = 0;
 			cout << "ancrage = (" << b.getAncrage().x<< "," << b.getAncrage().y << ")" << endl;
 			cout << "Taille = " << b.getTaille() << " Direction = " << b.getDirection() << endl;
-			cout << "Identifiant est " << b.getId() << endl;
+			cout << "Identifiant est " << b.getId() <<" Nombre de vie est "<<b.getPointDeVie()<< endl;
 
 			//direction 0
 			if (b.getDirection() == 0)
@@ -198,13 +203,42 @@ AIfacile::AIfacile()
 			int j = rand() % 10;
 
 			cout << "Tire la case: (" << i << ", " << j << ")" << endl;
-			if (jeu.tableau[1][j] == 0)
+			if (jeu.tableau[i][j] == 0)
 			{
 				jeu.tableau[i][j] = 2;
 				tireConfirme = 1;
 			}
 			else if (jeu.tableau[i][j] == 3)
 			{
+				bateau5.ajustPointDeVie();
+				jeu.tableau[i][j] = 1;
+				tireConfirme = 1;
+			}
+
+			else if (jeu.tableau[i][j] == 4)
+			{
+				bateau1.ajustPointDeVie();
+				jeu.tableau[i][j] = 1;
+				tireConfirme = 1;
+			}
+
+			else if (jeu.tableau[i][j] == 5)
+			{
+				bateau2.ajustPointDeVie();
+				jeu.tableau[i][j] = 1;
+				tireConfirme = 1;
+			}
+
+			else if (jeu.tableau[i][j] == 6)
+			{
+				bateau3.ajustPointDeVie();
+				jeu.tableau[i][j] = 1;
+				tireConfirme = 1;
+			}
+
+			else if (jeu.tableau[i][j] == 7)
+			{
+				bateau4.ajustPointDeVie();
 				jeu.tableau[i][j] = 1;
 				tireConfirme = 1;
 			}
