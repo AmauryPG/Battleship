@@ -10,7 +10,7 @@ int main()
 	comp.placeBateau(comp.getBateau(2));
 	comp.placeBateau(comp.getBateau(3));
 	comp.placeBateau(comp.getBateau(4));
-	//comp.placeBateau(comp.getBateau(5));
+	comp.placeBateau(comp.getBateau(5));
 	comp.imprimeTableau();
 	/*
 	for (int i = 0; i < 20; i++)
