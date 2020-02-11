@@ -7,7 +7,7 @@ int main()
 	srand((unsigned)time(0));
 	AIfacile comp;
 	comp.placeBateau(comp.getBateau(1));
-	comp.placeBateau(comp.getBateau(2));
+	//comp.placeBateau(comp.getBateau(2));
 	comp.placeBateau(comp.getBateau(3));
 	comp.placeBateau(comp.getBateau(4));
 	comp.placeBateau(comp.getBateau(5));
