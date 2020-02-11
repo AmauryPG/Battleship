@@ -1,11 +1,99 @@
-#include "Bateaux.h"
+#include "bateau.h"
 
-Bateaux::Bateaux()
+Bateau::Bateau()
+{
+	taille = 0;
+	ancrage.x = 0;
+	ancrage.y = 0;
+	PointDeVie = taille;
+	estVivant = 1;
+	direction = 0;
+	id = 0;
+}
+
+Bateau::~Bateau()
 {
 
 }
 
-Bateaux::~Bateaux()
+int Bateau::EstVivant()
 {
+	if (taille == 0)
+	{
+		estVivant = 0;
+	}
+	else if (taille < 0)
+	{
+		estVivant = 1;
+	}
 
+	return estVivant;
+}
+
+int Bateau::getTaille()
+{
+	return taille;
+}
+
+void Bateau::setTaille(int size)
+{
+	if (size > 1 && size < 6)
+	{
+		taille = size;
+	}
+	else
+	{
+		taille = 2;
+	}
+}
+
+int Bateau::getPointDeVie()
+{
+	return PointDeVie;
+}
+
+void Bateau::InitialPointDeVie()
+{
+	PointDeVie = taille;
+}
+
+void Bateau::ajustPointDeVie()
+{
+	if (PointDeVie > 0)
+	{
+		PointDeVie--;
+	}
+}
+
+int Bateau::getDirection()
+{
+	return direction;
+}
+
+void Bateau::setDirection(int dir)
+{
+	if (dir >= 0 && dir < 4)
+	{
+		direction = dir;
+	}
+}
+
+void Bateau::setAncrage(AncrageBateau a)
+{
+	ancrage = a;
+}
+
+AncrageBateau Bateau::getAncrage()
+{
+	return ancrage;
+}
+
+void Bateau::setId(int identifiant)
+{
+	id = identifiant;
+}
+
+int Bateau::getId()
+{
+	return id;
 }
