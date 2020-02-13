@@ -22,6 +22,6 @@ protected:
 	*/
 
 public:
-	virtual void tirer();
-	virtual void placer();
+	virtual void tirer() = 0;
+	virtual void placer() = 0;
 };
