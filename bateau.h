@@ -2,6 +2,10 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+
+#define largeur 10
+#define hauteur 10
+
 using namespace std;
 
 #define nord  0
@@ -17,7 +21,7 @@ struct AncrageBateau
 
 class Bateau
 {
-	int id;
+	int id; // Voir la classe User
 	int direction; // 0: Nord, 1: Est, 2: Sud, 3: Ouest
 	int taille; // Se trouve entre 2 et 5 inclusivement
 	int PointDeVie; // Selon de combien le bateau est touche

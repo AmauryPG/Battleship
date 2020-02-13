@@ -5,7 +5,7 @@ Bateau::Bateau()
 	taille = 0;
 	ancrage.x = 0;
 	ancrage.y = 0;
-	PointDeVie = taille;
+	PointDeVie = 0;
 	estVivant = 1;
 	direction = 0;
 	id = 0;

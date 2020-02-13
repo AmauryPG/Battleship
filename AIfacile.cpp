@@ -3,33 +3,44 @@
 
 AIfacile::AIfacile()
 {
+	int dir;
 	//creation  de bateaux
-	bateau1.setTaille(4);
-	bateau1.setDirection(0);
-	bateau1.setId(4);
+	//patrol boat (2 vies)
+	dir = rand() % 4;
+	bateaux[0].setTaille(2);
+	bateaux[0].setDirection(dir);
+	bateaux[0].InitialPointDeVie();
 
-	bateau2.setTaille(3);
-	bateau2.setDirection(1);
-	bateau2.setId(5);
+	//submarine (3 vies)
+	dir = rand() % 4;
+	bateaux[1].setTaille(3);
+	bateaux[1].setDirection(dir);
+	bateaux[1].InitialPointDeVie();
 
-	bateau3.setTaille(4);
-	bateau3.setDirection(2);
-	bateau3.setId(6);
+	//destroyer (3 vies)
+	dir = rand() % 4;
+	bateaux[2].setTaille(3);
+	bateaux[2].setDirection(dir);
+	bateaux[2].InitialPointDeVie();
 
-	bateau4.setTaille(5);
-	bateau4.setDirection(3);
-	bateau4.setId(7);
+	//battleship (4 vies)
+	dir = rand() % 4;
+	bateaux[3].setTaille(4);
+	bateaux[3].setDirection(dir);
+	bateaux[3].InitialPointDeVie();
 
-	bateau5.setTaille(2);
-	bateau5.setDirection(3);
-	bateau5.setId(3);
+	//carrier (5 vies)
+	dir = rand() % 4;
+	bateaux[4].setTaille(5);
+	bateaux[4].setDirection(dir);
+	bateaux[4].InitialPointDeVie();
 
 	// init du tableau
 	for (int i = 0; i < largeur; i++)
 	{
 		for (int j = 0; j < hauteur; j++)
 		{
-			jeu.tableau[i][j] = 0;
+			jeu.tableau[i][j] = -1;
 		}
 	}
 }
@@ -47,194 +58,198 @@ AIfacile::AIfacile()
 		}
 	}
 
-	bool AIfacile::placeBateau(Bateau& b)
+	void AIfacile::placeBateau()
 	{
-		int bateauxPlacer = 0;
-
-		while (bateauxPlacer != 1)
+		int bateauxPlacer;
+		for (int i = 0; i < 5; i++)
 		{
+			bateauxPlacer = 0;
+
+			while (bateauxPlacer != 1)
+			{
+				cout << "=====================================" << endl;
+				int ancrageX = rand() % 10;
+				int ancrageY = rand() % 10;
+				AncrageBateau anc{ ancrageX, ancrageY };
+				bateaux[i].setAncrage(anc);
+				int ctr = 0;
+				cout << "ancrage = (" << bateaux[i].getAncrage().x << "," << bateaux[i].getAncrage().y << ")" << endl;
+				cout << " Nombre de vie est " << bateaux[i].getPointDeVie() << endl;
+
+				//direction 0
+				if (bateaux[i].getDirection() == 0)
+				{
+					if (bateaux[i].getAncrage().x - bateaux[i].getTaille() > 0)
+					{
+						cout << "Not going out of bounds" << endl;
+						for (int n = 0; n < bateaux[i].getTaille(); n++)
+						{
+							if (jeu.tableau[bateaux[i].getAncrage().x - n][bateaux[i].getAncrage().y] != -1)
+							{
+								cout << "Incrementing Counter" << endl;
+								ctr++;
+							}
+						}
+						cout << "Counter is equal to " << ctr << endl;
+						if (ctr == 0)
+						{
+							for (int n = 0; n < bateaux[i].getTaille(); n++)
+							{
+								jeu.tableau[bateaux[i].getAncrage().x - n][bateaux[i].getAncrage().y] = i;
+								bateauxPlacer = 1;
+							}
+						}
+					}
+					else
+					{
+						cout << "try again" << endl;
+					}
+				}
+
+				// direction 1
+				if (bateaux[i].getDirection() == 1)
+				{
+					if (bateaux[i].getAncrage().y + bateaux[i].getTaille() < largeur)
+					{
+						cout << "Not going out of bounds" << endl;
+						for (int n = 0; n < bateaux[i].getTaille(); n++)
+						{
+							if (jeu.tableau[bateaux[i].getAncrage().x][bateaux[i].getAncrage().y + n] != -1)
+							{
+								cout << "Incrementing Counter" << endl;
+								ctr++;
+							}
+						}
+						cout << "Counter is equal to " << ctr << endl;
+						if (ctr == 0)
+						{
+							for (int n = 0; n < bateaux[i].getTaille(); n++)
+							{
+								jeu.tableau[bateaux[i].getAncrage().x][bateaux[i].getAncrage().y + n] = i;
+								bateauxPlacer = 1;
+							}
+						}
+					}
+					else
+					{
+						cout << "try again" << endl;
+					}
+				}
+
+				// direction 2
+				if (bateaux[i].getDirection() == 2)
+				{
+					if (bateaux[i].getAncrage().x + bateaux[i].getTaille() < hauteur)
+					{
+						cout << "Not going out of bounds" << endl;
+						for (int n = 0; n < bateaux[i].getTaille(); n++)
+						{
+							if (jeu.tableau[bateaux[i].getAncrage().x + n][bateaux[i].getAncrage().y] != -1)
+							{
+								cout << "Incrementing Counter" << endl;
+								ctr++;
+							}
+						}
+						cout << "Counter is equal to " << ctr << endl;
+						if (ctr == 0)
+						{
+							for (int n = 0; n < bateaux[i].getTaille(); n++)
+							{
+								jeu.tableau[bateaux[i].getAncrage().x + n][bateaux[i].getAncrage().y] = i;
+								bateauxPlacer = 1;
+							}
+						}
+					}
+					else
+					{
+						cout << "try again" << endl;
+					}
+				}
+
+				// direction 3
+
+				if (bateaux[i].getDirection() == 3)
+				{
+					if (bateaux[i].getAncrage().y - bateaux[i].getTaille() > 0)
+					{
+						cout << "Not going out of bounds" << endl;
+						for (int n = 0; n < bateaux[i].getTaille(); n++)
+						{
+							if (jeu.tableau[bateaux[i].getAncrage().x][bateaux[i].getAncrage().y - n] != -1)
+							{
+								cout << "Incrementing Counter" << endl;
+								ctr++;
+							}
+						}
+						cout << "Counter is equal to " << ctr << endl;
+						if (ctr == 0)
+						{
+							for (int n = 0; n < bateaux[i].getTaille(); n++)
+							{
+								jeu.tableau[bateaux[i].getAncrage().x][bateaux[i].getAncrage().y - n] = i;
+								bateauxPlacer = 1;
+							}
+						}
+					}
+					else
+					{
+						cout << "try again" << endl;
+					}
+				}
+			}
 			cout << "=====================================" << endl;
-			int ancrageX = rand() % 10;
-			int ancrageY = rand() % 10;
-			AncrageBateau anc{ ancrageX, ancrageY };
-			b.setAncrage(anc);
-			int ctr = 0;
-			cout << "ancrage = (" << b.getAncrage().x<< "," << b.getAncrage().y << ")" << endl;
-			cout << "Taille = " << b.getTaille() << " Direction = " << b.getDirection() << endl;
-			cout << "Identifiant est " << b.getId() << endl;
-
-			//direction 0
-			if (b.getDirection() == 0)
-			{
-				if (b.getAncrage().x - b.getTaille() > 0)
-				{
-					cout << "Not going out of bounds" << endl;
-					for (int n = 0; n < b.getTaille(); n++)
-					{
-						if (jeu.tableau[b.getAncrage().x - n][b.getAncrage().y] != 0)
-						{
-							cout << "Incrementing Counter" << endl;
-							ctr++;
-						}
-					}
-					cout << "Counter is equal to " << ctr << endl;
-					if (ctr == 0)
-					{
-						for (int n = 0; n < b.getTaille(); n++)
-						{
-							jeu.tableau[b.getAncrage().x - n][b.getAncrage().y] = b.getId();
-							bateauxPlacer = 1;
-						}
-					}
-				}
-				else
-				{
-					cout << "try again" << endl;
-				}
-			}
-
-			// direction 1
-			if (b.getDirection() == 1)
-			{
-				if (b.getAncrage().y + b.getTaille() < largeur)
-				{
-					cout << "Not going out of bounds" << endl;
-					for (int n = 0; n < b.getTaille(); n++)
-					{
-						if (jeu.tableau[b.getAncrage().x][b.getAncrage().y + n ] != 0)
-						{
-							cout << "Incrementing Counter" << endl;
-							ctr++;
-						}
-					}
-					cout << "Counter is equal to " << ctr << endl;
-					if (ctr == 0)
-					{
-						for (int n = 0; n < b.getTaille(); n++)
-						{
-							jeu.tableau[b.getAncrage().x][b.getAncrage().y + n] = b.getId();
-							bateauxPlacer = 1;
-						}
-					}
-				}
-				else
-				{
-					cout << "try again" << endl;
-				}
-			}
-
-			// direction 2
-			if (b.getDirection() == 2)
-			{
-				if (b.getAncrage().x + b.getTaille() < hauteur)
-				{
-					cout << "Not going out of bounds" << endl;
-					for (int n = 0; n < b.getTaille(); n++)
-					{
-						if (jeu.tableau[b.getAncrage().x + n][b.getAncrage().y] != 0)
-						{
-							cout << "Incrementing Counter" << endl;
-							ctr++;
-						}
-					}
-					cout << "Counter is equal to " << ctr << endl;
-					if (ctr == 0)
-					{
-						for (int n = 0; n < b.getTaille(); n++)
-						{
-							jeu.tableau[b.getAncrage().x + n][b.getAncrage().y] = b.getId();
-							bateauxPlacer = 1;
-						}
-					}
-				}
-				else
-				{
-					cout << "try again" << endl;
-				}
-			}
-
-			// direction 3
-
-			if (b.getDirection() == 3)
-			{
-				if (b.getAncrage().y - b.getTaille() > 0)
-				{
-					cout << "Not going out of bounds" << endl;
-					for (int n = 0; n < b.getTaille(); n++)
-					{
-						if (jeu.tableau[b.getAncrage().x][b.getAncrage().y - n] != 0)
-						{
-							cout << "Incrementing Counter" << endl;
-							ctr++;
-						}
-					}
-					cout << "Counter is equal to " << ctr << endl;
-					if (ctr == 0)
-					{
-						for (int n = 0; n < b.getTaille(); n++)
-						{
-							jeu.tableau[b.getAncrage().x][b.getAncrage().y - n] = b.getId();
-							bateauxPlacer = 1;
-						}
-					}
-				}
-				else
-				{
-					cout << "try again" << endl;
-				}
-			}
+			bateauxPlacer = 0;
 		}
-		cout << "=====================================" << endl;
-		return true;
 	}
 
-	bool AIfacile::tire()
+	void AIfacile::tire()
 	{
 
-		int tireConfirme = 0;
+		bool tireConfirme = false;
 		while (tireConfirme == 0)
 		{
 			int i = rand() % 10;
 			int j = rand() % 10;
 
 			cout << "Tire la case: (" << i << ", " << j << ")" << endl;
-			if (jeu.tableau[1][j] == 0)
+			if (jeu.tableau[i][j] == -1)
 			{
-				jeu.tableau[i][j] = 2;
-				tireConfirme = 1;
+				jeu.tableau[i][j] = -2;
+				tireConfirme = true;
 			}
+			else if (jeu.tableau[i][j] == 0)
+			{
+				bateaux[0].ajustPointDeVie();
+				jeu.tableau[i][j] = -3;
+				tireConfirme = true;
+			}
+
+			else if (jeu.tableau[i][j] == 1)
+			{
+				bateaux[1].ajustPointDeVie();
+				jeu.tableau[i][j] = -3;
+				tireConfirme = true;
+			}
+
+			else if (jeu.tableau[i][j] == 2)
+			{
+				bateaux[2].ajustPointDeVie();
+				jeu.tableau[i][j] = 1;
+				tireConfirme = true;
+			}
+
 			else if (jeu.tableau[i][j] == 3)
 			{
-				jeu.tableau[i][j] = 1;
-				tireConfirme = 1;
+				bateaux[3].ajustPointDeVie();
+				jeu.tableau[i][j] = -3;
+				tireConfirme = true;
 			}
-		}
-		return true;
-	}
 
-	Bateau& AIfacile::getBateau(int num)
-	{
-		if (num == 1)
-		{
-			return bateau1;
-		}
-		else if (num == 2)
-		{
-			return bateau2;
-		}
-
-		else if (num == 3)
-		{
-			return bateau3;
-		}
-
-		else if (num == 4)
-		{
-			return bateau4;
-		}
-
-		else
-		{
-			return bateau5;
+			else if (jeu.tableau[i][j] == 4)
+			{
+				bateaux[4].ajustPointDeVie();
+				jeu.tableau[i][j] = -3;
+				tireConfirme = true;
+			}
 		}
 	}
