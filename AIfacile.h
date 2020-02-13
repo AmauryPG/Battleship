@@ -6,21 +6,13 @@
 
 class AIfacile
 {
-	
-	Bateau bateau1;
-	Bateau bateau2;
-	Bateau bateau3;
-	Bateau bateau4;
-	Bateau bateau5;
-	AireDeJeu jeu;
+	Bateau bateaux[5];
 
 public:
+	AireDeJeu jeu;
+	AireDeJeu ecran;
 	AIfacile();
 	void imprimeTableau();
-	virtual bool placeBateau(Bateau& b);
-	virtual bool tire();
-	Bateau& getBateau(int num);
-	void couleBateau();
-	
-
+	virtual void placeBateau();
+	virtual void tire();
 };
