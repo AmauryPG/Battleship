@@ -1,9 +1,6 @@
 #pragma once
 #include "bateau.h"
 
-
-
-
 class AIfacile
 {
 	Bateau bateaux[5];
