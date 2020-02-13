@@ -4,6 +4,10 @@
 #include <ctime>
 using namespace std;
 
+#define nord  0
+#define est   1
+#define ouest 3
+#define sud   2
 
 struct AncrageBateau
 {
@@ -39,5 +43,6 @@ public:
 	int getId();
 
 	void setAncrage(AncrageBateau);
+	void setAncrage(int x, int y);
 	AncrageBateau getAncrage();
 };

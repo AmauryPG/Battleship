@@ -83,6 +83,12 @@ void Bateau::setAncrage(AncrageBateau a)
 	ancrage = a;
 }
 
+void Bateau::setAncrage(int x, int y)
+{
+	ancrage.x = x;
+	ancrage.y = y;
+}
+
 AncrageBateau Bateau::getAncrage()
 {
 	return ancrage;
