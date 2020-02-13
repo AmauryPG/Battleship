@@ -16,8 +16,7 @@ struct AncrageBateau
 };
 
 class Bateau
-{
-	int id;
+{ 
 	int direction; // 0: Nord, 1: Est, 2: Sud, 3: Ouest
 	int taille; // Se trouve entre 2 et 5 inclusivement
 	int PointDeVie; // Selon de combien le bateau est touche
@@ -38,9 +37,7 @@ public:
 	void ajustPointDeVie();
 
 	int getDirection();
-	void setDirection(int dir);
-	void setId(int id);
-	int getId();
+	void setDirection(int dir); 
 
 	void setAncrage(AncrageBateau);
 	void setAncrage(int x, int y);

@@ -7,8 +7,7 @@ Bateau::Bateau()
 	ancrage.y = 0;
 	PointDeVie = taille;
 	estVivant = 1;
-	direction = 0;
-	id = 0;
+	direction = 0; 
 }
 
 Bateau::~Bateau()
@@ -92,14 +91,4 @@ void Bateau::setAncrage(int x, int y)
 AncrageBateau Bateau::getAncrage()
 {
 	return ancrage;
-}
-
-void Bateau::setId(int identifiant)
-{
-	id = identifiant;
-}
-
-int Bateau::getId()
-{
-	return id;
 }
