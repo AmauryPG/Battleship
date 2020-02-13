@@ -19,6 +19,7 @@ int main()
 	cout << "Bateau3 = ID = " << comp.getBateau(3).getId() << " = " << comp.getBateau(3).getPointDeVie() << endl;
 	cout << "Bateau4 = ID = " << comp.getBateau(4).getId() << " = " << comp.getBateau(4).getPointDeVie() << endl;
 	cout << "Bateau5 = ID = " << comp.getBateau(5).getId() << " = " << comp.getBateau(5).getPointDeVie() << endl;
+	/*
 	//attaque
 	for (int i = 0; i < 20; i++)
 	{
@@ -32,5 +33,6 @@ int main()
 	cout << "Bateau3 = ID = " << comp.getBateau(3).getId() << " = " << comp.getBateau(3).getPointDeVie() << endl;
 	cout << "Bateau4 = ID = " << comp.getBateau(4).getId() << " = " << comp.getBateau(4).getPointDeVie() << endl;
 	cout << "Bateau5 = ID = " << comp.getBateau(5).getId() << " = " << comp.getBateau(5).getPointDeVie() << endl;
+	*/
 	return 0;
 }

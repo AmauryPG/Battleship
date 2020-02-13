@@ -3,29 +3,35 @@
 
 AIfacile::AIfacile()
 {
+	int dir;
 	//creation  de bateaux
+	dir = rand() % 4;
 	bateau1.setTaille(3);
-	bateau1.setDirection(0);
+	bateau1.setDirection(dir);
 	bateau1.InitialPointDeVie();
 	bateau1.setId(4);
 
+	dir = rand() % 4;
 	bateau2.setTaille(3);
-	bateau2.setDirection(1);
+	bateau2.setDirection(dir);
 	bateau2.InitialPointDeVie();
 	bateau2.setId(5);
 
+	dir = rand() % 4;
 	bateau3.setTaille(4);
-	bateau3.setDirection(2);
+	bateau3.setDirection(dir);
 	bateau3.InitialPointDeVie();
 	bateau3.setId(6);
 
+	dir = rand() % 4;
 	bateau4.setTaille(5);
-	bateau4.setDirection(3);
+	bateau4.setDirection(dir);
 	bateau4.InitialPointDeVie();
 	bateau4.setId(7);
 
+	dir = rand() % 4;
 	bateau5.setTaille(2);
-	bateau5.setDirection(3);
+	bateau5.setDirection(dir);
 	bateau5.InitialPointDeVie();
 	bateau5.setId(3);
 
@@ -196,7 +202,7 @@ AIfacile::AIfacile()
 	bool AIfacile::tire()
 	{
 
-		int tireConfirme = 0;
+		bool tireConfirme = false;
 		while (tireConfirme == 0)
 		{
 			int i = rand() % 10;
@@ -206,44 +212,53 @@ AIfacile::AIfacile()
 			if (jeu.tableau[i][j] == 0)
 			{
 				jeu.tableau[i][j] = 2;
-				tireConfirme = 1;
+				tireConfirme = true;
+				return true;
 			}
 			else if (jeu.tableau[i][j] == 3)
 			{
 				bateau5.ajustPointDeVie();
 				jeu.tableau[i][j] = 1;
-				tireConfirme = 1;
+				tireConfirme = true;
+				return true;
 			}
 
 			else if (jeu.tableau[i][j] == 4)
 			{
 				bateau1.ajustPointDeVie();
 				jeu.tableau[i][j] = 1;
-				tireConfirme = 1;
+				tireConfirme = true;
+				return true;
 			}
 
 			else if (jeu.tableau[i][j] == 5)
 			{
 				bateau2.ajustPointDeVie();
 				jeu.tableau[i][j] = 1;
-				tireConfirme = 1;
+				tireConfirme = true;
+				return true;
 			}
 
 			else if (jeu.tableau[i][j] == 6)
 			{
 				bateau3.ajustPointDeVie();
 				jeu.tableau[i][j] = 1;
-				tireConfirme = 1;
+				tireConfirme = true;
+				return true;
 			}
 
 			else if (jeu.tableau[i][j] == 7)
 			{
 				bateau4.ajustPointDeVie();
 				jeu.tableau[i][j] = 1;
-				tireConfirme = 1;
+				tireConfirme = true;
+				return true;
+			}
+			else
+			{
+					return false;
 			}
 		}
-		return true;
 	}
 
 	Bateau& AIfacile::getBateau(int num)
@@ -272,3 +287,4 @@ AIfacile::AIfacile()
 			return bateau5;
 		}
 	}
+	
