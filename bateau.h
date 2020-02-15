@@ -4,11 +4,6 @@
 #include <ctime>
 using namespace std;
 
-#define nord  0
-#define est   1
-#define ouest 3
-#define sud   2
-
 struct AncrageBateau
 {
 	int x;

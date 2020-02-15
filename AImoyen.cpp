@@ -20,95 +20,128 @@ void AImoyen::tirer()
 	{
 
 	}
-}
+}  
 
 void AImoyen::placer()
 {
 	srand(time(NULL));
+	
 	int x, y;
-	bool loop;
-	bool direction[4];
-	int dir = 0;
+	int directionTime = 0;
+	bool loop = true;  
 
-	//on place la carrier en premier
 	do
 	{
-		x = rand() % 10;
-		y = rand() % 10;
-
-		loop = true;
-		direction[0] = true;
-		direction[1] = true;
-		direction[2] = true;
-		direction[3] = true;
-
 		do
 		{
-			if (m_jeu[x][y] == 0)
-			{
-				switch (rand() % 4)
-				{
-				case NORD:
-					if (direction[0])
-					{
-						for (int i = 1; i < m_bateau[4].getTaille(); i++)
-						{
-							if (y + i >= 10 || m_jeu[x][y + i] != 0)
-							{
-								direction[0] = false;
-							}
-						}
-						loop = false;
-						dir = NORD;
-					}
-					break;
-				case EST:
-					if (direction[1])
-					{
-						for (int i = 1; i < m_bateau[4].getTaille(); i++)
-						{
-							if (x + i >= 10 || m_jeu[x + i][y] != 0)
-							{
-								direction[1] = false;
-							}
-						}
-						loop = false;
-						dir = EST;
-					}
-					break;
-				case SUD:
-					if (direction[2])
-					{
-						for (int i = 1; i < m_bateau[4].getTaille(); i++)
-						{
-							if (y - i < 0 || m_jeu[x][y - i] != 0)
-							{
-								direction[2] = false;
-							}
-						}
-						loop = false;
-						dir = SUD;
-					}
-					break;
-				case OUEST:
-					if (direction[3])
-					{
-						for (int i = 1; i < m_bateau[4].getTaille(); i++)
-						{
-							if (x - i < 0 || m_jeu[x - i][y] != 0)
-							{
-								direction[3] = false;
-							}
-						}
-						loop = false;
-						dir = OUEST;
-					}
-					break;
-				}
-			}
-		} while (loop && (direction[0] || direction[1] || direction[2] || direction[3]));
-	} while (dir == 0);
+			x = rand() % 10;
+			y = rand() % 10;
+		} while (m_jeu[x][y] != VIDE); 
 
+		directionTime = 0;
+
+		do
+		{ 
+			switch (rand() % 4)
+			{
+			case NORD:
+				if (y - m_bateau[4].getTaille() >= 0)
+				{
+					for (int i = 1; i < m_bateau[4].getTaille(); i++)
+					{ 
+						if (m_jeu[x][y - i] != VIDE)
+						{
+							loop = false;
+							break;
+						}
+					}
+					
+					if (loop)
+					{
+						loop = false;
+						for (int i = 0; i < m_bateau[4].getTaille(); i++)
+						{
+							m_jeu[x][y - i] = 4; 
+						}
+					}
+				}
+				directionTime++;
+				break;
+			case SUD:
+				if (y + m_bateau[4].getTaille() < 10) 
+				{
+					for (int i = 1; i < m_bateau[4].getTaille(); i++)
+					{ 
+						if (m_jeu[x][y + i] != VIDE)
+						{
+							loop = false;
+							break;
+						}
+					}
+
+					if (loop)
+					{
+						loop = false;
+						for (int i = 0; i < m_bateau[4].getTaille(); i++)
+						{
+							m_jeu[x][y + i] = 4; 
+						}
+					}
+				}
+				directionTime++;
+				break;
+			case EST:
+				if (x + m_bateau[4].getTaille() < 10) 
+				{
+					for (int i = 1; i < m_bateau[4].getTaille(); i++)
+					{ 
+						if (m_jeu[x + i][y] != VIDE)
+						{
+							loop = false;
+							break;
+						}
+					}
+					
+					if (loop)
+					{
+						loop = false;
+						for (int i = 0; i < m_bateau[4].getTaille(); i++)
+						{
+							m_jeu[x + i][y] = 4; 
+						}
+					}
+				}
+				directionTime++;
+				break;
+			case OUEST:
+				if (x - m_bateau[4].getTaille() >= 0) 
+				{
+					for (int i = 1; i < m_bateau[4].getTaille(); i++)
+					{ 
+						if (m_jeu[x - i][y] != VIDE)
+						{
+							loop = false;
+							break;
+						}
+					}
+					
+					if (loop)
+					{
+						loop = false;
+						for (int i = 0; i < m_bateau[4].getTaille(); i++)
+						{
+							m_jeu[x - i][y] = 4; 
+						}
+					}
+				}
+				directionTime++;
+				break;
+			}
+		} while (loop && directionTime < 4);   
+	} while (loop);
+	 
+
+	/*
 	int x2, y2;
 
 	//on place maintenant le reste de facons strategique
@@ -140,5 +173,5 @@ void AImoyen::placer()
 					direction[3] = false;
 			}
 		} while ();
-	}
+	}*/
 }

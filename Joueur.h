@@ -6,10 +6,12 @@
 #define SUD   2
 #define OUEST 3
 
+#define VIDE	-1
+#define ECHEC	-2
+#define TOUCHE	-3
+
 class Joueur {
 protected:
-	int m_jeu[10][10];
-	int m_ecran[10][10];
 	
 	Bateau m_bateau[5];
 	/*
@@ -22,8 +24,21 @@ protected:
 	*/
 
 public:
+	int m_jeu[10][10];
+	int m_ecran[10][10];
+
 	Joueur()
 	{
+
+		for (int y = 0; y < 10; y++)
+		{
+			for (int x = 0; x < 10; x++)
+			{
+				m_jeu[x][y] = -1;
+				m_ecran[x][y] = -1;
+			}
+		}
+
 		//patrol boat
 		m_bateau[0].setTaille(2);
 		m_bateau[0].InitialPointDeVie();
@@ -44,8 +59,11 @@ public:
 		m_bateau[4].setTaille(5);
 		m_bateau[4].InitialPointDeVie();
 	}
-	~Joueur();
+	~Joueur()
+	{
 
-	virtual void tirer();
-	virtual void placer();
+	}
+
+	virtual void tirer() = 0;
+	virtual void placer() = 0;
 };
