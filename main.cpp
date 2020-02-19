@@ -1,4 +1,4 @@
-#include "bateau.h"
+ #include "bateau.h"
 #include "AIfacile.h"
 
 
