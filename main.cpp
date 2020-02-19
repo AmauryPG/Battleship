@@ -6,6 +6,7 @@ int main()
 {
 	srand((unsigned)time(0));
 	AIfacile comp;
+<<<<<<< Updated upstream
 	comp.placeBateau();
 	comp.imprimeTableau();
 	/*
@@ -23,11 +24,16 @@ int main()
 	cout << "Bateau4 = ID = " << comp.getBateau(4).getId() << " = " << comp.getBateau(4).getPointDeVie() << endl;
 	cout << "Bateau5 = ID = " << comp.getBateau(5).getId() << " = " << comp.getBateau(5).getPointDeVie() << endl;
 	//attaque
+=======
+	comp.placer();
+	comp.imprimeTableau();
+>>>>>>> Stashed changes
 	for (int i = 0; i < 20; i++)
 	{
-		comp.tire();
+		comp.tirer();
 	}
 	comp.imprimeTableau();
+<<<<<<< Updated upstream
 
 	cout << "nombre vie final de chaque bateau: " << endl;
 	cout << "Bateau1 = ID = " << comp.getBateau(1).getId() << " = " << comp.getBateau(1).getPointDeVie() << endl;
@@ -36,5 +42,8 @@ int main()
 	cout << "Bateau4 = ID = " << comp.getBateau(4).getId() << " = " << comp.getBateau(4).getPointDeVie() << endl;
 	cout << "Bateau5 = ID = " << comp.getBateau(5).getId() << " = " << comp.getBateau(5).getPointDeVie() << endl;
 	*/
+=======
+//	system("pause");
+>>>>>>> Stashed changes
 	return 0;
 }
