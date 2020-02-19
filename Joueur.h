@@ -47,6 +47,20 @@ public:
 
 	~Joueur();
 
-	virtual void tirer() = 0;
+	virtual void tirer(int &x, int &y) = 0;
 	virtual void placer() = 0;
+	
+	int analyse(int x, int y)
+	{
+		if (m_jeu[y][x] >= 0)
+		{
+			m_bateau[m_jeu[y][x]].ajustPointDeVie();
+		}
+		return m_jeu[y][x];
+	}
+
+	void ecran(int x, int y, int val)
+	{
+		m_ecran[y][x] = val;
+	}
 };
