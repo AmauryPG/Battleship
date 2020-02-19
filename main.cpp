@@ -7,9 +7,9 @@
 
 int main()
 {
-	AImoyen ai;
+	AImoyen ai; 
 
-	ai.placer();
+	ai.tirer();
 
 	for (int x = 0; x < 10; x++)
 	{

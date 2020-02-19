@@ -14,12 +14,53 @@ AImoyen::~AImoyen()
 
 }
 
+int m_jeuEnemie[10][10];
+
 void AImoyen::tirer()
 {
-	for (int bateau = 0; bateau < 2; bateau++)
+	srand(time(NULL));
+	int x, y;
+
+	//test
+	m_jeu[4][4] = 4;
+	m_jeu[3][4] = 4;
+	m_jeu[2][4] = 4;
+	m_jeu[1][4] = 4;
+	m_jeu[0][4] = 4;
+	 
+	if (m_chasse)
 	{
+		//a la chasse du bateau toucher
+		if (x + 1 >= 10 && m_sequence == 0)
+		{
+			m_sequence++;
+		}
+		else
+		{
+
+		}
 
 	}
+	else
+	{
+		//cherche un point possible de choisir
+		do
+		{
+			do
+			{
+				x = rand() % 10;
+			} while (x % 2 == 0);
+
+			do
+			{
+				y = rand() % 10;
+			} while (y % 2 == 0);
+		} while (m_ecran[x][y] != ECHEC);
+	}
+	 
+	//---------------------verification du contact------------------------
+
+	cout << x << " : " << y << endl;
 }  
 
 void AImoyen::placer()

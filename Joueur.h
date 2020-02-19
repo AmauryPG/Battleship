@@ -38,7 +38,7 @@ public:
 				m_ecran[x][y] = -1;
 			}
 		}
-
+		
 		//patrol boat
 		m_bateau[0].setTaille(2);
 		m_bateau[0].InitialPointDeVie();
