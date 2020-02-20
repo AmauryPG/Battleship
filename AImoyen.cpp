@@ -16,10 +16,9 @@ AImoyen::~AImoyen()
 
 int m_jeuEnemie[10][10];
 
-void AImoyen::tirer()
+void AImoyen::tirer(int &x, int &y)
 {
-	srand(time(NULL));
-	int x, y;
+	srand(time(NULL)); 
 
 	//test
 	m_jeu[4][4] = 4;

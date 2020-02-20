@@ -12,6 +12,6 @@ public:
 	AImoyen();
 	~AImoyen();
 
-	void tirer();
+	void tirer(int& x, int& y);
 	void placer();
 };
