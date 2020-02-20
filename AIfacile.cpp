@@ -193,10 +193,27 @@ void AIfacile::placer()
 	}
 }
 
-void AIfacile::tirer()
+void AIfacile::tirer(int &x, int &y)
 {
 
 	bool tireConfirme = false;
+	while (tireConfirme == false)
+	{
+		int i = rand() % 10;
+		int j = rand() % 10;
+		if (m_ecran[i][j] < 0)
+		{
+			i = rand() % 10;
+			j = rand() % 10; 
+		}
+		else
+		{
+			x = j;
+			y = i;
+			tireConfirme = true;
+		}
+	}
+	/*
 	while (tireConfirme == 0)
 	{
 		int i = rand() % 10;
@@ -243,4 +260,5 @@ void AIfacile::tirer()
 			tireConfirme = true;
 		}
 	}
+	*/
 }

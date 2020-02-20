@@ -14,7 +14,7 @@ public:
 	AIfacile();
 	void imprimeTableau();
 	virtual void placer();
-	virtual void tirer();
+	virtual void tirer(int &x, int &y);
 
 
 };
