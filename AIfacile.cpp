@@ -201,64 +201,14 @@ void AIfacile::tirer(int &x, int &y)
 	{
 		int i = rand() % 10;
 		int j = rand() % 10;
-		if (m_ecran[i][j] < 0)
+		if (m_ecran[i][j] == -2 || m_ecran[i][j] == -3)
 		{
+			cout << "Deja tirer ici, je retire" << endl;
 			i = rand() % 10;
-			j = rand() % 10; 
+			j = rand() % 10;
 		}
-		else
-		{
-			x = j;
-			y = i;
-			tireConfirme = true;
-		}
+		x = i;
+		y = j;
+		tireConfirme = true;
 	}
-	/*
-	while (tireConfirme == 0)
-	{
-		int i = rand() % 10;
-		int j = rand() % 10;
-
-		cout << "Tire la case: (" << i << ", " << j << ")" << endl;
-		if (m_jeu[i][j] == -1)
-		{
-			m_jeu[i][j] = -2;
-			tireConfirme = true;
-		}
-		else if (m_jeu[i][j] == 0)
-		{
-			m_bateau[0].ajustPointDeVie();
-			m_jeu[i][j] = -3;
-			tireConfirme = true;
-		}
-
-		else if (m_jeu[i][j] == 1)
-		{
-			m_bateau[1].ajustPointDeVie();
-			m_jeu[i][j] = -3;
-			tireConfirme = true;
-		}
-
-		else if (m_jeu[i][j] == 2)
-		{
-			m_bateau[2].ajustPointDeVie();
-			m_jeu[i][j] = 1;
-			tireConfirme = true;
-		}
-
-		else if (m_jeu[i][j] == 3)
-		{
-			m_bateau[3].ajustPointDeVie();
-			m_jeu[i][j] = -3;
-			tireConfirme = true;
-		}
-
-		else if (m_jeu[i][j] == 4)
-		{
-			m_bateau[4].ajustPointDeVie();
-			m_jeu[i][j] = -3;
-			tireConfirme = true;
-		}
-	}
-	*/
 }

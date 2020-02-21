@@ -1,15 +1,18 @@
 #include "bateau.h"
 #include "AIfacile.h"
 #include "Usager.h"
+#include "jeu.h"
 
 
 int main()
 {
 	srand((unsigned)time(0));
+	Jeu battleShip;
+	battleShip.jouer();
 	/*Test de la classe usager*/
-	Usager ludo;
-	ludo.imprimeTableau();
-	ludo.placer();
+//	Usager ludo;
+//	ludo.afficheJeu();
+//	ludo.placer();
 	/*Test de la classe AIfacile*/
 //	AIfacile comp;
 //	comp.placer();

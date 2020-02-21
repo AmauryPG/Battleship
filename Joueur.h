@@ -52,19 +52,53 @@ public:
 	virtual void tirer(int &x, int &y) = 0;
 	virtual void placer() = 0;
 
-	int analyse(int x, int y)
+	int analyseTableau(int x, int y)
 	{
-		if (m_jeu[y][x] >= 0)
+		if (m_jeu[x][y] >= 0)
 		{
-			m_bateau[m_jeu[y][x]].ajustPointDeVie();
+			m_bateau[m_jeu[x][y]].ajustPointDeVie();
+			return -3;
 		}
-		return m_jeu[y][x];
+		else
+		{
+			return -2;
+		}
 	}
 
-	void ecran(int x, int y, int val)
+	void ajusteEcran(int x, int y, int val)
 	{
-		m_ecran[y][x] = val;
+		m_ecran[x][y] = val;
 	}
 
-//	virtual void tirer() = 0;
+	void ajusteJeu(int x, int y, int val)
+	{
+		m_jeu[x][y] = val;
+	}
+
+	void afficheJeu()
+	{
+		for (int i = 0; i < largeur; i++)
+		{
+			for (int j = 0; j < hauteur; j++)
+			{
+				cout << m_jeu[i][j] << "\t";
+			}
+			cout << endl;
+			cout << endl;
+		}
+	}
+
+	void afficheEcran()
+	{
+		for (int i = 0; i < largeur; i++)
+		{
+			for (int j = 0; j < hauteur; j++)
+			{
+				cout << m_ecran[i][j] << "\t";
+			}
+			cout << endl;
+			cout << endl;
+		}
+	}
+
 };

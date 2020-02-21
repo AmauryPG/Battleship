@@ -20,12 +20,12 @@ void Usager::placer()
 	int dir;
 	int ctr;
 
-	bool tireConfirme = false;
+	bool placeConfirme = false;
 
 	for (int i = 0; i < 5; i++)
 	{
-		tireConfirme = false;
-		while (tireConfirme == false)
+		placeConfirme = false;
+		while (placeConfirme == false)
 		{
 			ancrageY = -1;
 			ancrageX = -1;
@@ -61,7 +61,9 @@ void Usager::placer()
 			m_bateau[i].setAncrage(anc);
 			m_bateau[i].setDirection(dir);
 			ctr = 0;
+
 			/*direction de 0*/
+
 			if (dir == 0)
 			{
 				if (m_bateau[i].getAncrage().x - m_bateau[i].getTaille() >= 0)
@@ -80,8 +82,8 @@ void Usager::placer()
 							m_jeu[m_bateau[i].getAncrage().x - n][m_bateau[i].getAncrage().y] = i;
 						}
 						cout << "bateau place!" << endl;
-						tireConfirme = true;
-						imprimeTableau();
+						placeConfirme = true;
+						afficheJeu();
 					}
 					else
 					{
@@ -101,7 +103,7 @@ void Usager::placer()
 				{
 					for (int n = 0; n < m_bateau[i].getTaille(); n++)
 					{
-						if (m_jeu[m_bateau->getAncrage().x][m_bateau[i].getAncrage().y + n] != -1)
+						if (m_jeu[m_bateau[i].getAncrage().x][m_bateau[i].getAncrage().y + n] != -1)
 						{
 							ctr++;
 						}
@@ -112,9 +114,9 @@ void Usager::placer()
 						{
 							m_jeu[m_bateau[i].getAncrage().x][m_bateau[i].getAncrage().y + n] = i;
 						}
-						tireConfirme = true;
+						placeConfirme = true;
 						cout << "Bateau place!" << endl;
-						imprimeTableau();
+						afficheJeu();
 					}
 					else
 					{
@@ -145,9 +147,9 @@ void Usager::placer()
 						{
 							m_jeu[m_bateau[i].getAncrage().x + n][m_bateau[i].getAncrage().y] = i;
 						}
-						tireConfirme = true;
+						placeConfirme = true;
 						cout << "Bateau place!" << endl;
-						imprimeTableau();
+						afficheJeu();
 					}
 					else
 					{
@@ -178,9 +180,9 @@ void Usager::placer()
 						{
 							m_jeu[m_bateau[i].getAncrage().x][m_bateau[i].getAncrage().y - n] = i;
 						}
-						tireConfirme = true;
+						placeConfirme = true;
 						cout << "Bateau place!" << endl;
-						imprimeTableau();
+						afficheJeu();
 					}
 				}
 				else
@@ -210,16 +212,5 @@ void Usager::tirer(int &x, int &y)
 	y = j;
 }
 
-void Usager::imprimeTableau()
-{
-	for (int i = 0; i < largeur; i++)
-	{
-		for (int j = 0; j < hauteur; j++)
-		{
-			cout << m_jeu[i][j] << "\t";
-		}
-		cout << endl;
-		cout << endl;
-	}
-}
+
 
