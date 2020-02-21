@@ -22,6 +22,7 @@ void Jeu::jouer()
 	/*les joueurs tirent tour a tour*/
 	while (nbVieJoueur1 > 0 && nbVieJoueur2 > 0)
 	{
+		cout << "Nombre de vie du joueur 1: " << nbVieJoueur1 << " Nombre de vie du joueur 2: " << nbVieJoueur2 << endl;
 		etatTire = -4;
 		joueur1.afficheEcran();
 		cout << "==================================Jeu=============================================" << endl;
@@ -39,10 +40,8 @@ void Jeu::jouer()
 			}
 		}
 		joueur1.ajusteEcran(x,y, etatTire);
-		cout << "Rendu ICI2 Apres le joueur a tirer" << endl;
 		/*Tire du joueur 2*/
 		joueur2.tirer(x, y);
-		cout << "Rendu ici, lordi a tirer" << endl;
 		etatTire = joueur1.analyseTableau(x, y);
 		if (etatTire == -3)
 		{

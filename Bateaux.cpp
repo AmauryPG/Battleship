@@ -63,6 +63,11 @@ void Bateau::ajustPointDeVie()
 	{
 		PointDeVie--;
 	}
+	if (PointDeVie == 0)
+	{
+		cout << "Bateau coule" << endl;
+		estVivant = 0;
+	}
 }
 
 int Bateau::getDirection()
