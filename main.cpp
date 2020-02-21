@@ -6,6 +6,7 @@
 
 int main()
 {
+	cout << "Allo" << endl;
 	srand((unsigned)time(0));
 	Jeu battleShip;
 	battleShip.jouer();
