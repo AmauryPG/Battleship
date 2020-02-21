@@ -50,6 +50,7 @@ public:
 
 	}
 	virtual void tirer(int &x, int &y) = 0;
+	virtual void placer() = 0;
 
 	int analyse(int x, int y)
 	{
@@ -66,5 +67,4 @@ public:
 	}
 
 //	virtual void tirer() = 0;
-	virtual void placer() = 0;
 };
