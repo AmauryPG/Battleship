@@ -230,7 +230,7 @@ bool AIavancer::RechercheExhaustif(int longueur)
 }
 
 void AIavancer::tirer(int& x, int& y)
-{
+{ 
 	for (int i = 0; i < 5; i++)
 	{
 		//passe a travers tout la longueur de ses bateaux

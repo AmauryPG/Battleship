@@ -9,9 +9,14 @@
 int main()
 {
 	int x, y;
-	AIavancer ai; 
+	AImoyen ai; 
 
-	ai.tirer(x, y);
+	for (int i = 0; i < 5; i++)
+	{
+		ai.tirer(x, y);
+
+		cout << x << " : " << y << endl;
+	}
 
 	return 0;
 }

@@ -1,12 +1,15 @@
 #include "AImoyen.h"
 
 AImoyen::AImoyen()
-{
-	//bateau patrole
-	m_bateau[0].setTaille(2);
-
-	//sous marin
-	m_bateau[1].setTaille(3);
+{ 
+	for (int x = 0; x < 10; x++)
+	{
+		for (int y = 0; y < 10; y++)
+		{
+			m_ecran[x][y] = VIDE;
+			m_jeu[x][y] = VIDE;
+		}
+	}
 }
 
 AImoyen::~AImoyen()
@@ -17,49 +20,83 @@ AImoyen::~AImoyen()
 int m_jeuEnemie[10][10];
 
 void AImoyen::tirer(int &x, int &y)
-{
-	srand(time(NULL)); 
-
-	//test
-	m_jeu[4][4] = 4;
-	m_jeu[3][4] = 4;
-	m_jeu[2][4] = 4;
-	m_jeu[1][4] = 4;
-	m_jeu[0][4] = 4;
+{ 
+	srand(time(NULL));  
 	 
-	if (m_chasse)
-	{
-		//a la chasse du bateau toucher
-		if (x + 1 >= 10 && m_sequence == 0)
-		{
-			m_sequence++;
-		}
-		else
-		{
 
+	if (m_ecran[m_toucheX][m_toucheY] == TOUCHE)
+	{ 
+		//regarde autour si un point a deja ete essayer et bouger vers ce point
+		if (m_toucheX + 1 < 10 && m_ecran[m_toucheX + 1][m_toucheY] == TOUCHE)
+		{
+			m_toucheX++;
+		}
+		else if (m_toucheX - 1 >= 0 && m_ecran[m_toucheX - 1][m_toucheY] == TOUCHE)
+		{
+			m_toucheX--;
+		}
+		else if (m_toucheY + 1 < 10 && m_ecran[m_toucheX][m_toucheY + 1] == TOUCHE)
+		{
+			m_toucheY++;
+		}
+		else if (m_toucheY - 1 >= 0 && m_ecran[m_toucheX][m_toucheY - 1] == TOUCHE)
+		{
+			m_toucheY--;
+		}
+
+		//a la chasse du bateau toucher
+		if (m_toucheX + 1 < 10 && m_ecran[m_toucheX + 1][m_toucheY] == VIDE)
+		{ 
+			x = m_toucheX + 1;
+			y = m_toucheY;
+		}
+		else if(m_toucheX - 1 >= 0 && m_ecran[m_toucheX - 1][m_toucheY] == VIDE)
+		{ 
+			x = m_toucheX - 1;
+			y = m_toucheY;
+		}
+		else if(m_toucheY + 1 < 10 && m_ecran[m_toucheX][m_toucheY + 1] == VIDE)
+		{ 
+			x = m_toucheX;
+			y = m_toucheY + 1;
+		}
+		else if(m_toucheY - 1 >= 0 && m_ecran[m_toucheX][m_toucheY - 1] == VIDE)
+		{ 
+			x = m_toucheX;
+			y = m_toucheY - 1;
 		}
 
 	}
 	else
-	{
-		//cherche un point possible de choisir
-		do
-		{
-			do
-			{
-				x = rand() % 10;
-			} while (x % 2 == 0);
+	{ 
+		//cherche un point possible de choisir 
 
-			do
-			{
-				y = rand() % 10;
-			} while (y % 2 == 0);
-		} while (m_ecran[x][y] != ECHEC);
-	}
-	 
-	//---------------------verification du contact------------------------
+		x = rand() % 10;
+		y = rand() % 10;
 
-	cout << x << " : " << y << endl;
+		//reduit la recherche par moitie
+		if ((x % 2) == 1) {
+			if ((rand() % 2) == 0) {
+				x--;
+			}
+			else {
+				x++;
+			}
+		}
+
+		if ((y % 2) == 1) {
+			if ((rand() % 2) == 0) {
+				x--;
+			}
+			else {
+				x++;
+			}
+		} 
+		
+		m_toucheX = x;
+		m_toucheY = y;
+	}   
+		
 }  
 
 void AImoyen::placer()
