@@ -6,11 +6,21 @@
 #define SUD   2
 #define OUEST 3
 
+#define VIDE   -1
+#define ECHEC  -2
+#define TOUCHE -3
+
+#define PATROL_BOAT 0
+#define SUBMARIN    1
+#define DESTROYER   2
+#define BATTLESHIP  3
+#define CARRIER     4
+
 class Joueur {
 protected:
 	int m_jeu[10][10];
 	int m_ecran[10][10];
-	
+
 	Bateau m_bateau[4];
 	/*
 	*	nom			|	index	|	taille
@@ -43,13 +53,23 @@ public:
 		//carrier
 		m_bateau[4].setTaille(5);
 		m_bateau[4].InitialPointDeVie();
+
+		//vider les tableaux
+		for (int x = 0; x < 10; x++)
+		{
+			for (int y = 0; y < 10; y++)
+			{
+				m_ecran[x][y] = VIDE;
+				m_jeu[x][y] = VIDE;
+			}
+		}
 	}
 
-	~Joueur();
+	~Joueur() {}
 
-	virtual void tirer(int &x, int &y) = 0;
+	virtual void tirer(int& x, int& y) = 0;
 	virtual void placer() = 0;
-	
+
 	int analyse(int x, int y)
 	{
 		if (m_jeu[y][x] >= 0)
