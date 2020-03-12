@@ -8,10 +8,14 @@ private:
 	int m_toucheX = 4, m_toucheY = 4;
 	int m_sequence = 0;
 	bool m_chasse = false;
+
+	void placement(int& x, int& y);
 public:
 	AImoyen();
 	~AImoyen();
 
 	void tirer(int& x, int& y);
 	void placer();
+
+	void imprimer();
 };

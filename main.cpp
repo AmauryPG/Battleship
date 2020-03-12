@@ -11,12 +11,9 @@ int main()
 	int x, y;
 	AImoyen ai; 
 
-	for (int i = 0; i < 5; i++)
-	{
-		ai.tirer(x, y);
+	ai.placer();
 
-		cout << x << " : " << y << endl;
-	}
+	ai.imprimer();
 
 	return 0;
 }
