@@ -9,7 +9,6 @@ private:
 	int m_sequence = 0;
 	bool m_chasse = false;
 
-	void placement(int& x, int& y);
 public:
 	AImoyen();
 	~AImoyen();
@@ -17,5 +16,4 @@ public:
 	void tirer(int& x, int& y);
 	void placer();
 
-	void imprimer();
 };

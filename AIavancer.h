@@ -17,6 +17,8 @@ public:
 
 	~AIavancer();
 
+	void imprimer();
+
 	void affichageTableau(int tableau[10][10]);
 
 	void PreAnalyse(const int tableau[10][10]);

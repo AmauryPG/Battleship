@@ -247,7 +247,28 @@ void AIavancer::tirer(int& x, int& y)
 	cout <<"AIavancer a choisit : " << x << " : " << y << endl;
 }
 
+
+void AIavancer::imprimer()
+{
+	for (int x = 0; x < 10; x++)
+	{
+		for (int y = 0; y < 10; y++)
+		{
+			if (m_jeu[x][y] == -1)
+			{
+				cout << "E  ";
+			}
+			else
+			{
+				cout << m_jeu[x][y] << "  ";
+			}
+		}
+		cout << endl;
+	}
+}
+
 void AIavancer::placer()
 {
 
 }
+
